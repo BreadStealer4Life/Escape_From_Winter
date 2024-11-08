@@ -14,6 +14,7 @@ namespace Winter.Assets.Project.Scripts.Runtime.Services.Audio
         {
             DataProvider.Instance.GameConfig.SoundsVolumeChanged += SetSoundsVolume;
 
+            if(_mixer)
             _mixer.SetFloat("SoundsVolume", DataProvider.Instance.GameConfig.SoundsVolume);
         }
 
@@ -29,7 +30,8 @@ namespace Winter.Assets.Project.Scripts.Runtime.Services.Audio
 
         private void SetSoundsVolume()
         {
-            _mixer.SetFloat("SoundsVolume", DataProvider.Instance.GameConfig.SoundsVolume);
+            if (_mixer)
+                _mixer.SetFloat("SoundsVolume", DataProvider.Instance.GameConfig.SoundsVolume);
         }
     }
 }

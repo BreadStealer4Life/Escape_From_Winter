@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Olechka/Scenes/MainMenu.unity
+    guid: d734bcc19dc6dd140854ec0ab3896daa
+  - enabled: 1
+    path: Assets/Olechka/Scenes/Level1.unity
+    guid: 6b28d94f00eefc6419836d806141e598
+  - enabled: 1
+    path: Assets/Olechka/Scenes/Lvl2.unity
+    guid: 17a937d705319564f8eb550c43152fac
+  - enabled: 1
+    path: Assets/Olechka/Scenes/Lvl3.unity
+    guid: d6c027092c1c8964c979ee171866fbdc
   m_configObjects: {}
