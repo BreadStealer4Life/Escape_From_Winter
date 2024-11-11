@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Olechka/Scenes/MainMenu.unity
-    guid: d734bcc19dc6dd140854ec0ab3896daa
+    path: Assets/zichemerr(Jamil)/Scenes/MainMenu.unity
+    guid: c1945c7931789f4479502c31292e2874
   - enabled: 1
-    path: Assets/Olechka/Scenes/Level1.unity
-    guid: 6b28d94f00eefc6419836d806141e598
+    path: Assets/zichemerr(Jamil)/Scenes/Level1.unity
+    guid: 8ee20996c889dc643b87654f7bd32f45
   - enabled: 1
-    path: Assets/Olechka/Scenes/Lvl2.unity
-    guid: 17a937d705319564f8eb550c43152fac
+    path: Assets/zichemerr(Jamil)/Scenes/Lvl2.unity
+    guid: 551a2d1b195b94a44885022c27d431b5
   - enabled: 1
-    path: Assets/Olechka/Scenes/Lvl3.unity
-    guid: d6c027092c1c8964c979ee171866fbdc
+    path: Assets/zichemerr(Jamil)/Scenes/Lvl3.unity
+    guid: bbd8f009c3149a140a5119f5bfdb329a
   m_configObjects: {}
