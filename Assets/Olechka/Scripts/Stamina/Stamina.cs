@@ -40,6 +40,8 @@ namespace Olechka
 
         bool Active_bool = false;
 
+        bool Update_bool = false;
+
         #endregion
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -60,7 +62,9 @@ namespace Olechka
 
         private void Update()
         {
-            if (Active_bool)
+            PlayerController_script._motorController.ClimbingEnduranceUpdated += Climbing;
+
+            if (Active_bool && Update_bool)
             {
                 Down_value();
             }
@@ -91,12 +95,23 @@ namespace Olechka
             else
             {
                 //Off_event.Invoke();
-                PlayerController_script._motorController.Climbing(Vector2.zero, 0, true, Vector3.zero);
+                //PlayerController_script._motorController.Climbing(Vector2.zero, 0, true, Vector3.zero);
+                //PlayerController_script._motorController.Fall();
+                
                 PlayerController_script._isPlayerOnClimbingRockSurface = false;
-                //Active_bool = false;
+                Active_bool = false;
 
             }
                 
+        }
+
+        void Climbing(float _value)
+        {
+            if (Update_bool == false && _value < 500)
+            {
+                Update_bool = true;
+                UI_stamina_script.Activity(true);
+            }
         }
         #endregion
 
@@ -105,15 +120,20 @@ namespace Olechka
         #region Public Methods
         public void Activity(bool _activity)
         {
-                if (_activity)
-                {
-                    Activation_event.Invoke();
-                    Value_active = Value;
-                }
+            if (_activity)
+            {
+                Activation_event.Invoke();
+                Value_active = Value;
+                PlayerController_script._motorController._isClimbing = true;
+            }
+            else
+            {
+                PlayerController_script._motorController._isClimbing = false;
+                Update_bool = false;
+                UI_stamina_script.Activity(false);
+            }
 
-                UI_stamina_script.Activity(_activity);
-
-                Active_bool = _activity;
+            Active_bool = _activity;
         }
         #endregion
 

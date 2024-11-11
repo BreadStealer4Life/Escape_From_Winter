@@ -20,7 +20,7 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
 
         private bool _isCrouching;
         private bool _isSprinting;
-        private bool _isClimbing;
+        internal bool _isClimbing;
         private float _lastHandSwinging;
 
         private float _climbingEndurance;
@@ -92,13 +92,13 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
         // todo: to rework!
         public void Climbing(Vector2 moveDirection, float icePickSwinging, bool isFalling, Vector3 wallNormal)
         {
-            if (_controller.isGrounded)
+            if (_controller.isGrounded && _isClimbing)
             {
                 // Debug.Log("MovingOnGround");
                 MovingOnGround(moveDirection, isFalling);
             }
 
-            if (IsClimbing(moveDirection, icePickSwinging) && IsUsingDifferentPickaxe(icePickSwinging))
+            if (IsClimbing(moveDirection, icePickSwinging) && IsUsingDifferentPickaxe(icePickSwinging) && _isClimbing)
             {
                 // Debug.Log("DoClimbing");
                 DoClimbing(moveDirection, icePickSwinging, wallNormal);
@@ -116,7 +116,7 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
             Move(moveDirection, isFalling);
         }
 
-        private void Fall()
+        public void Fall()
         {
             if (_currentVelocity.y > 0) _currentVelocity.y = 0;
             _lastHandSwinging = .0f;
