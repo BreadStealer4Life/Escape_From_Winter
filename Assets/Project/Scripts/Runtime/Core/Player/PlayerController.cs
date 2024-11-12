@@ -27,14 +27,14 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
         [SerializeField] private Slider _enduranceSlider;
 
         private PlayerData _data;
-        private PlayerMotorService _motorController;
+        internal PlayerMotorService _motorController;
         private PlayerCameraService _cameraController;
         private PlayerHeadBobService _headBobController;
         private InputHandler _inputHandler;
         private SoundsPlayer _audioService;
 
         private bool _isPlayerOnSlipperySurface;
-        private bool _isPlayerOnClimbingRockSurface;
+        internal bool _isPlayerOnClimbingRockSurface;
         private bool _isPlayerReadyToClimbing;
         private bool _isControllerActive;
         Vector3 _climbingRockWallNormal;

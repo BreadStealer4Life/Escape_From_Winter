@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
+using NaughtyAttributes;
 
 namespace Olechka
 {
@@ -12,14 +12,17 @@ namespace Olechka
         [SerializeField]
         string Tag = "Тег";
 
+        [Foldout("Ивенты")]
         [Tooltip("Ивент срабатывания триггера по входу")]
         [SerializeField]
         UnityEvent Trigger_enter_event = new UnityEvent();
 
+        [Foldout("Ивенты")]
         [Tooltip("Ивент срабатывания триггера по выходу")]
         [SerializeField]
         UnityEvent Trigger_exit_event = new UnityEvent();
 
+        [Foldout("Ивенты")]
         [Tooltip("Ивент передающий, кто вошёл в триггер")]
         [SerializeField]
         UnityEvent<Transform> Obj_detect = new UnityEvent<Transform>();
