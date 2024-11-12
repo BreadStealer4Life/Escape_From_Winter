@@ -23,6 +23,14 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
         [SerializeField] private GameObject _leftIcePick;
         [SerializeField] private GameObject _rightIcePick;
 
+        [SerializeField]
+        Animator LeftIcePick_animator = null;
+
+        [SerializeField]
+        Animator RightIcePick_animator = null;
+
+        int Id_active_IcePick = 0;
+
         [Header("Temporary UI elements")]
         [SerializeField] private Slider _enduranceSlider;
 
@@ -87,6 +95,23 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
             if (_isPlayerOnClimbingRockSurface && _isPlayerReadyToClimbing)
             {
                 _motorController.Climbing(_inputHandler.MovementInput, _inputHandler.IcePickSwingingInput, _inputHandler.JumpState, _climbingRockWallNormal);
+
+                if (Id_active_IcePick != (int)_inputHandler.IcePickSwingingInput) 
+                {
+                    if (_inputHandler.IcePickSwingingInput == 1)
+                    {
+                        LeftIcePick_animator.CrossFade("Active", 0, 0, 0);
+                        Id_active_IcePick = (int)_inputHandler.IcePickSwingingInput;
+                    }
+
+                    else if (_inputHandler.IcePickSwingingInput == -1)
+                    {
+                        RightIcePick_animator.CrossFade("Active", 0, 0, 0);
+                        Id_active_IcePick = (int)_inputHandler.IcePickSwingingInput;
+                    }
+
+                    
+                }
             }
             else
             {
@@ -118,7 +143,7 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
             if (_isPlayerOnClimbingRockSurface) _isPlayerReadyToClimbing = true;
 
             _leftIcePick.SetActive(_isPlayerReadyToClimbing);
-            _rightIcePick.SetActive(_isPlayerReadyToClimbing);
+            _rightIcePick.SetActive(!_isPlayerReadyToClimbing);
 
             _thermometer.SetActive(!_isPlayerReadyToClimbing);
             _lighter.SetActive(!_isPlayerReadyToClimbing);
