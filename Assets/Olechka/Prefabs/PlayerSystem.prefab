@@ -795,7 +795,7 @@ GameObject:
   - component: {fileID: 8249780516576406110}
   - component: {fileID: 3463248671903663778}
   - component: {fileID: 3518725978721919277}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hand_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1308,7 +1308,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7002901948545453382}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main_hands
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1341,7 +1341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8814829054158855563}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rotation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1373,7 +1373,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8894440071708404442}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rotation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2255,7 +2255,7 @@ GameObject:
   - component: {fileID: 6275739660793683143}
   - component: {fileID: 3566335102587132211}
   - component: {fileID: 4729624986890206110}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hand_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2551,7 +2551,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4727365973877551719}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IcePickaxe_hands
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2672,6 +2672,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hand_L_kirk
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839301485601867413, guid: f7f683b9aee0ca04aaa214080489b2c1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190199557045175423, guid: f7f683b9aee0ca04aaa214080489b2c1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2999,6 +3009,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3864929151742493141, guid: 8aa86971c3a38fd46bc4b15b3785a466,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3864929151742493141, guid: 8aa86971c3a38fd46bc4b15b3785a466,
+        type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -3071,6 +3086,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849368951966721119, guid: 8aa86971c3a38fd46bc4b15b3785a466,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
