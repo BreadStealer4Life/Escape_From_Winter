@@ -9,7 +9,7 @@ using UnityEngine.Events;
 
 namespace Olechka
 {
-    [AddComponentMenu("Sych scripts / Game / Base / Brain SM")]
+    [AddComponentMenu("Olechka scripts / Game / Base / Brain SM")]
     [DisallowMultipleComponent]
     public abstract class Abstract_Brain_SM : MonoBehaviour
     {

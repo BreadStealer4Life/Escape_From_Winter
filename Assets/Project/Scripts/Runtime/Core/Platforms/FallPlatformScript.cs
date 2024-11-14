@@ -4,7 +4,7 @@ using Winter.Assets.Project.Scripts.Runtime.Core.Player;
 
 public class FallPlatformScript : MonoBehaviour
 {
-    [SerializeField, Range(0, 5)] private float fallTime = 2.0f;
+    [SerializeField, Range(0, 5)] private float fallTime = 0.5f;
     [SerializeField] private AudioSource _platformAudioSource;
     [SerializeField] private AudioClip _audioClip;
     [SerializeField] private Rigidbody _fallIceRB;

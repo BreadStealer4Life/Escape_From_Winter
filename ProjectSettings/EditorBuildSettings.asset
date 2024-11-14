@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/zichemerr(Jamil)/Scenes/MainMenu.unity
-    guid: c1945c7931789f4479502c31292e2874
+    path: Assets/Nikitka(GameDesigner)/MainMenu.unity
+    guid: 8df368dc2ff402c40a6fbe96ab688a54
   - enabled: 1
-    path: Assets/zichemerr(Jamil)/Scenes/Level1.unity
-    guid: 8ee20996c889dc643b87654f7bd32f45
+    path: Assets/Nikitka(GameDesigner)/Level1.unity
+    guid: 46bb5470c9d50e64aa5af192abc86586
   - enabled: 1
-    path: Assets/zichemerr(Jamil)/Scenes/Lvl2.unity
-    guid: 551a2d1b195b94a44885022c27d431b5
+    path: Assets/Nikitka(GameDesigner)/Lvl2.unity
+    guid: 175a59b54d425384baadc48dee083dab
   - enabled: 1
-    path: Assets/zichemerr(Jamil)/Scenes/Lvl3.unity
-    guid: bbd8f009c3149a140a5119f5bfdb329a
+    path: Assets/Nikitka(GameDesigner)/Lvl3.unity
+    guid: 4791326f282bc6448a76dded5172320e
   m_configObjects: {}

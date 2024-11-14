@@ -30,6 +30,8 @@ namespace Winter.Assets.Project.Scripts.Runtime.Infrastructure.Scene.Root
         private FreezeModel _freezeModel;
         private GamePauseService _gamePauseService;
 
+        [SerializeField] private bool _usePauseGameOnStart = false;
+
         void Start()
         {
             SetCursorInvisible();
@@ -38,6 +40,7 @@ namespace Winter.Assets.Project.Scripts.Runtime.Infrastructure.Scene.Root
             InitDeathConditions();
             InitIntro();
 
+          if (_isIntroNeeded)
             _gamePauseService.PauseGame();
 
             _playerBootstrap.Init();
