@@ -47,6 +47,20 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
         private bool _isControllerActive;
         Vector3 _climbingRockWallNormal;
 
+        [Header("Ограничение по карабканью")]
+        [SerializeField]
+        float Height_dist = 4f;
+
+        [SerializeField]
+        float Width_dist = 4f;
+
+        [SerializeField]
+        LayerMask Layer_climbing = 1;
+
+        [Tooltip("Включить отображения Gizmos")]
+        [SerializeField]
+        bool Gizmos_mode_bool = false;
+
         public void Init(InputHandler inputHandler, PlayerData playerData, SoundsPlayer audioService)
         {
             _data = playerData;
@@ -92,9 +106,12 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
             if (!_isControllerActive)
                 return;
 
+
             if (_isPlayerOnClimbingRockSurface && _isPlayerReadyToClimbing)
             {
-                _motorController.Climbing(_inputHandler.MovementInput, _inputHandler.IcePickSwingingInput, _inputHandler.JumpState, _climbingRockWallNormal);
+
+                if(!Check_obstacle_climbing(_inputHandler.MovementInput))
+                    _motorController.Climbing(_inputHandler.MovementInput, _inputHandler.IcePickSwingingInput, _inputHandler.JumpState, _climbingRockWallNormal);
 
                 if (Id_active_IcePick != (int)_inputHandler.IcePickSwingingInput) 
                 {
@@ -122,6 +139,42 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
 
             _cameraController.RotateCamera(_inputHandler.RotationInput);
             _headBobController.UpdateHeadBob(_inputHandler.MovementInput, _characterController.isGrounded, _isPlayerOnSlipperySurface);
+        }
+
+        bool Check_obstacle_climbing(Vector2 _direct)
+        {
+
+                bool result = false;
+
+            RaycastHit hit;
+
+            switch (_direct)
+            {
+                case Vector2 v when v.Equals(Vector2.up):
+                    if (Physics.SphereCast(transform.position, 0.2f, Vector3.up, out hit, Height_dist, Layer_climbing, QueryTriggerInteraction.Ignore))
+                    {
+                        result = true;
+                    }
+                        
+                    break;
+/*
+                case Vector2 v when v.Equals(Vector2.down):
+                    if (Physics.Raycast(transform.position, transform.position + transform.up * -1, Height_dist, Layer_climbing))
+                        result = true;
+                    break;
+*/
+                case Vector2 v when v.Equals(Vector2.right):
+                    if (Physics.SphereCast(transform.position, 0.2f, transform.right, out hit, Width_dist, Layer_climbing, QueryTriggerInteraction.Ignore))
+                        result = true;
+                    break;
+
+                case Vector2 v when v.Equals(Vector2.left):
+                    if (Physics.SphereCast(transform.position, 0.2f, transform.right * -1, out hit, Width_dist, Layer_climbing, QueryTriggerInteraction.Ignore))
+                        result = true;
+                    break;
+            }
+
+                return result;
         }
 
         private void OnSlipperyTriggerEnter(Collider collider)
@@ -166,5 +219,19 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
             _enduranceSlider.maxValue = _data.ClimbingEnduranceMaximum;
             _enduranceSlider.value = value;
         }
+
+        void OnDrawGizmos()
+        {
+            if (Gizmos_mode_bool)
+            {
+                Vector3 start_point = transform.position;
+
+                Gizmos.DrawLine(start_point, start_point + Vector3.up * Height_dist);
+                //Gizmos.DrawLine(start_point, start_point + transform.up * -1 * Height_dist);
+                Gizmos.DrawLine(start_point, start_point + transform.right * Width_dist);
+                Gizmos.DrawLine(start_point, start_point + transform.right * -1 * Width_dist);
+            }
+        }
+
     }
 }
