@@ -6,7 +6,7 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
     public class PlayerCameraService
     {
         private Transform _motorCamera;
-        private float _yRotation;
+        internal float _yRotation;
         private Transform _motorObject;
         private PlayerData _data;
 
@@ -24,6 +24,11 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
 
             _motorCamera.localRotation = Quaternion.Euler(_yRotation, _motorCamera.localRotation.y, _motorCamera.localRotation.z);
             _motorObject.Rotate(Vector3.up * rotation.x);
+        }
+
+        public void Tetst()
+        {
+            _motorCamera.localRotation = Quaternion.identity;
         }
     }
 }
