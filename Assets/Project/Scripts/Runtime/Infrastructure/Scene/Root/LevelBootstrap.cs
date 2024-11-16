@@ -7,10 +7,11 @@ using Winter.Assets.Project.Scripts.Runtime.Core.Player;
 using Winter.Assets.Project.Scripts.Runtime.Services.Audio;
 using Winter.Assets.Project.Scripts.Runtime.Services.GamePause;
 using Winter.Assets.Project.Scripts.Runtime.Services.Input;
+using Olechka;
 
 namespace Winter.Assets.Project.Scripts.Runtime.Infrastructure.Scene.Root
 {
-    public class LevelBootstrap : MonoBehaviour
+    public class LevelBootstrap : Singleton<LevelBootstrap>
     {
         [SerializeField] private PlayerBootstrap _playerBootstrap;
         [SerializeField] private PlayerController _playerController;
@@ -24,8 +25,7 @@ namespace Winter.Assets.Project.Scripts.Runtime.Infrastructure.Scene.Root
         [SerializeField] private bool _isIntroNeeded;
 
         [Header("Death References")]
-        [SerializeField] private DeathHandler _deathHandler;
-        [SerializeField] private DeathTrigger[] _deathTriggers;
+        public DeathHandler _deathHandler;
 
         private FreezeModel _freezeModel;
         private GamePauseService _gamePauseService;
@@ -58,10 +58,6 @@ namespace Winter.Assets.Project.Scripts.Runtime.Infrastructure.Scene.Root
                 _freezeModel.FreezeValueChanged -= _strelkaController.UpdateStrelkaRotation;
             }
 
-            foreach (var trigger in _deathTriggers)
-            {
-                trigger.Enter -= _deathHandler.SetDeath;
-            }
         }
 
         private void InitGamePauseService()
@@ -87,11 +83,6 @@ namespace Winter.Assets.Project.Scripts.Runtime.Infrastructure.Scene.Root
         private void InitDeathConditions()
         {
             _freezeModel.FreezeMax += _deathHandler.SetDeath;
-
-            foreach (var trigger in _deathTriggers)
-            {
-                trigger.Enter += _deathHandler.SetDeath;
-            }
         }
 
         private void InitIntro()

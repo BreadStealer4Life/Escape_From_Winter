@@ -42,8 +42,9 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
 
         int Id_active_IcePick = 0;
 
-        [Header("Temporary UI elements")]
-        [SerializeField] private Slider _enduranceSlider;
+        //[Header("Temporary UI elements")]
+        //[SerializeField] 
+        //private Slider _enduranceSlider;
 
         private PlayerData _data;
         internal PlayerMotorService _motorController;
@@ -289,8 +290,8 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
 
         public void UpdateClimbingEndurance(float value)
         {
-            _enduranceSlider.maxValue = _data.ClimbingEnduranceMaximum;
-            _enduranceSlider.value = value;
+            //_enduranceSlider.maxValue = _data.ClimbingEnduranceMaximum;
+            //_enduranceSlider.value = value;
         }
 
         void OnDrawGizmos()
