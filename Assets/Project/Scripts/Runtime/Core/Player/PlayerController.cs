@@ -278,7 +278,6 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
         {
             _isPlayerOnClimbingRockSurface = true;
             _climbingRockWallNormal = collider.transform.forward;
-            print(_climbingRockWallNormal);
         }
 
         private void OnClimbingTriggerExit(Collider collider)

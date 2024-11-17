@@ -3356,6 +3356,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 813370181899186960}
     m_Modifications:
+    - target: {fileID: 3380763638912430938, guid: 563e944b4233f164a9f1b8617627ebc8,
+        type: 3}
+      propertyPath: _timeToFreeze
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5080427731801777113, guid: 563e944b4233f164a9f1b8617627ebc8,
         type: 3}
       propertyPath: _strelkaTrans
