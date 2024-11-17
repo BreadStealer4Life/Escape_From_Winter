@@ -69,7 +69,16 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
         float Width_dist = 4f;
 
         [SerializeField]
+        float Diagonally_dist = 4f;
+
+        [SerializeField]
+        float Radius_dist = 0.6f;
+
+        [SerializeField]
         LayerMask Layer_climbing = 1;
+
+        [SerializeField]
+        Vector3 OffSet = Vector3.zero;
 
         [Tooltip("Включить отображения Gizmos")]
         [SerializeField]
@@ -131,6 +140,10 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
 
                 if(!Check_obstacle_climbing(_inputHandler.MovementInput))
                     _motorController.Climbing(_inputHandler.MovementInput, _inputHandler.IcePickSwingingInput, _inputHandler.JumpState, _climbingRockWallNormal);
+                else if (_inputHandler.JumpState)
+                {
+                    _motorController.Climbing(Vector2.down, 0, _inputHandler.JumpState, _climbingRockWallNormal);
+                }
 
                 if (Id_active_IcePick != (int)_inputHandler.IcePickSwingingInput) 
                 {
@@ -171,33 +184,59 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
 
             RaycastHit hit;
 
-            switch (_direct)
-            {
-                case Vector2 v when v.Equals(Vector2.up):
-                    if (Physics.SphereCast(transform.position, 0.3f, Vector3.up, out hit, Height_dist, Layer_climbing, QueryTriggerInteraction.Ignore))
-                    {
-                        result = true;
-                    }
-                        
-                    break;
-/*
-                case Vector2 v when v.Equals(Vector2.down):
-                    if (Physics.Raycast(transform.position, transform.position + transform.up * -1, Height_dist, Layer_climbing))
-                        result = true;
-                    break;
-*/
-                case Vector2 v when v.Equals(Vector2.right):
-                    if (Physics.SphereCast(transform.position, 0.3f, transform.right, out hit, Width_dist, Layer_climbing, QueryTriggerInteraction.Ignore))
-                        result = true;
-                    break;
+            Vector3 direction = transform.right * _direct.x + transform.up * _direct.y;
+            direction.Normalize();
 
-                case Vector2 v when v.Equals(Vector2.left):
-                    if (Physics.SphereCast(transform.position, 0.3f, transform.right * -1, out hit, Width_dist, Layer_climbing, QueryTriggerInteraction.Ignore))
-                        result = true;
-                    break;
+            float dist = 0;
+
+            if (_direct.x != 0 && _direct.y <= 0)
+                dist = Width_dist;
+            else if (_direct.x == 0 && _direct.y > 0)
+                dist = Height_dist;
+            else if (_direct.x != 0 && _direct.y > 0)
+                dist = Diagonally_dist;
+
+            if (direction.y >= 0)
+            {
+                if (Physics.SphereCast(transform.position + OffSet, Radius_dist, direction, out hit, dist, Layer_climbing, QueryTriggerInteraction.Ignore))
+                {
+                    result = true;
+                }
+
+            }
+            else
+            {
+                result = true;
             }
 
-                return result;
+            /*
+                switch (_direct)
+                {
+                    case Vector2 v when v.Equals(Vector2.up):
+                        if (Physics.SphereCast(transform.position, 0.3f, Vector3.up, out hit, Height_dist, Layer_climbing, QueryTriggerInteraction.Ignore))
+                        {
+                            result = true;
+                        }
+
+                        break;
+
+                    case Vector2 v when v.Equals(Vector2.right):
+                        if (Physics.SphereCast(transform.position, 0.3f, transform.right, out hit, Width_dist, Layer_climbing, QueryTriggerInteraction.Ignore))
+                            result = true;
+                        break;
+
+                    case Vector2 v when v.Equals(Vector2.left):
+                        if (Physics.SphereCast(transform.position, 0.3f, transform.right * -1, out hit, Width_dist, Layer_climbing, QueryTriggerInteraction.Ignore))
+                            result = true;
+                        break;
+
+                    case Vector2 v when v.Equals(Vector2.left):
+                        if (Physics.SphereCast(transform.position, 0.3f, transform.right * -1, out hit, Width_dist, Layer_climbing, QueryTriggerInteraction.Ignore))
+                            result = true;
+                        break;
+                }
+                */
+            return result;
         }
 
         public void Add_Ice_axes()
@@ -311,10 +350,40 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
             {
                 Vector3 start_point = transform.position;
 
-                Gizmos.DrawLine(start_point, start_point + Vector3.up * Height_dist);
+                //Gizmos.DrawLine(start_point, start_point + Vector3.up * Height_dist);
                 //Gizmos.DrawLine(start_point, start_point + transform.up * -1 * Height_dist);
-                Gizmos.DrawLine(start_point, start_point + transform.right * Width_dist);
-                Gizmos.DrawLine(start_point, start_point + transform.right * -1 * Width_dist);
+                //Gizmos.DrawLine(start_point, start_point + transform.right * Width_dist);
+
+                Vector3 direct = Vector3.zero;
+
+                for (int x = 0; x < 5; x++)
+                {
+                    switch (x)
+                    {
+                        case 0:
+                            direct = transform.right * 1 + transform.up * 0 * Width_dist;
+                            break;
+
+                        case 1:
+                            direct = transform.right * -1 + transform.up * 0 * Width_dist;
+                            break;
+
+                        case 2:
+                            direct = transform.right * 0 + transform.up * 1 * Height_dist;
+                            break;
+
+                        case 3:
+                            direct = transform.right * 1 + transform.up * 1 * Diagonally_dist;
+                            break;
+
+                        case 4:
+                            direct = transform.right * -1 + transform.up * 1 * Diagonally_dist;
+                            break;
+                    }
+
+                    Gizmos.DrawLine(start_point, start_point + direct);
+                    Gizmos.DrawSphere(start_point + OffSet + direct, Radius_dist);
+                }
             }
         }
 

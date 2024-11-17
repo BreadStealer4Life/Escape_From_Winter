@@ -2186,9 +2186,12 @@ MonoBehaviour:
   RightIcePick_animator: {fileID: 6275739660793683143}
   Height_dist: 2
   Width_dist: 1.4
+  Diagonally_dist: 1.2
+  Radius_dist: 0.6
   Layer_climbing:
     serializedVersion: 2
     m_Bits: 1
+  OffSet: {x: 0, y: 0.5, z: 0}
   Gizmos_mode_bool: 1
 --- !u!114 &6406775805824493586
 MonoBehaviour:
