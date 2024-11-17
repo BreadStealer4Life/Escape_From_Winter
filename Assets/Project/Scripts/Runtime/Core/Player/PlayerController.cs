@@ -39,6 +39,8 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
 
         [SerializeField]
         Animator RightIcePick_animator = null;
+        
+        bool Add_ice_axes_bool = false;
 
         int Id_active_IcePick = 0;
 
@@ -198,6 +200,12 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
                 return result;
         }
 
+        public void Add_Ice_axes()
+        {
+            Add_ice_axes_bool = true;
+
+            OnInstrumentSwitched();
+        }
 
         void Start_Climbing(float _value)
         {
@@ -263,15 +271,18 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
 
         private void OnInstrumentSwitched()
         {
-            _isPlayerReadyToClimbing = !_isPlayerReadyToClimbing;
+            if (Add_ice_axes_bool) 
+            {
+                _isPlayerReadyToClimbing = !_isPlayerReadyToClimbing;
 
-            if (_isPlayerOnClimbingRockSurface) _isPlayerReadyToClimbing = true;
+                if (_isPlayerOnClimbingRockSurface) _isPlayerReadyToClimbing = true;
 
-            _leftIcePick.SetActive(_isPlayerReadyToClimbing);
-            _rightIcePick.SetActive(!_isPlayerReadyToClimbing);
+                _leftIcePick.SetActive(_isPlayerReadyToClimbing);
+                _rightIcePick.SetActive(!_isPlayerReadyToClimbing);
 
-            _thermometer.SetActive(!_isPlayerReadyToClimbing);
-            _lighter.SetActive(!_isPlayerReadyToClimbing);
+                _thermometer.SetActive(!_isPlayerReadyToClimbing);
+                _lighter.SetActive(!_isPlayerReadyToClimbing);
+            }
         }
 
         private void OnClimbingTriggerEnter(Collider collider)
