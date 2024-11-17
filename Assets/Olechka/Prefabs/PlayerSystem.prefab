@@ -1040,9 +1040,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eec58bd6cb6c1b248bec7152785e97ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _soundSource: {fileID: 7424844510816273902}
+  _sound: {fileID: 0}
   _mixer: {fileID: 24100000, guid: 18f7ab0c42f35694f9eb4e6e5a3e40ff, type: 2}
-  _stepClip: {fileID: 8300000, guid: 5f193c33c7f5e8747965217e8876af86, type: 3}
 --- !u!1 &2922678330751991897
 GameObject:
   m_ObjectHideFlags: 0

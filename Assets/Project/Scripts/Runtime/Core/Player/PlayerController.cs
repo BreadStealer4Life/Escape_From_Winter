@@ -232,7 +232,7 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
 
                     Quaternion character_rotation = _motorObject.rotation;
 
-                    _motorObject.rotation = Quaternion.Euler(_climbingRockWallNormal.x, _climbingRockWallNormal.y + 180f, _climbingRockWallNormal.z);
+                    _motorObject.rotation = Quaternion.LookRotation(_climbingRockWallNormal);//Quaternion.Euler(_climbingRockWallNormal.x, _climbingRockWallNormal.y + 180f, _climbingRockWallNormal.z);
 
                     _motorCamera.rotation = _motorObject.rotation;
 
@@ -278,6 +278,7 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
         {
             _isPlayerOnClimbingRockSurface = true;
             _climbingRockWallNormal = collider.transform.forward;
+            print(_climbingRockWallNormal);
         }
 
         private void OnClimbingTriggerExit(Collider collider)
