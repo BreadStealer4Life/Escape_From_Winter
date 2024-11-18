@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+#if UNITY_EDITOR
 namespace Olechka
 {
 	[CustomEditor(typeof(Skeleton_pose))]
@@ -63,3 +64,4 @@ namespace Olechka
     
 }
 }
+#endif
