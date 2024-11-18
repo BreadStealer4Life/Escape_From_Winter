@@ -16,7 +16,7 @@ MonoBehaviour:
   <Gravity>k__BackingField: -19.6
   <JumpHeight>k__BackingField: 8
   <RotateSpeed>k__BackingField: 5
-  <SmoothMoveDeltaTime>k__BackingField: 0.1
+  <SmoothMoveDeltaTime>k__BackingField: 0.8
   <DefaultSmoothMoveDeltaTime>k__BackingField: 0.1
   <SlipperySmoothMoveDeltaTime>k__BackingField: 0.8
   <BobbingFadeSpeed>k__BackingField: 10
@@ -25,5 +25,5 @@ MonoBehaviour:
   <CrouchHeightDelta>k__BackingField: 0.5
   <CrouchMoveSpeed>k__BackingField: 4
   <SprintMoveSpeed>k__BackingField: 9
-  <ClimbingMoveSpeed>k__BackingField: 25
+  <ClimbingMoveSpeed>k__BackingField: 75
   <ClimbingEnduranceMaximum>k__BackingField: 500
