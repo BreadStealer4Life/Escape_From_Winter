@@ -6,7 +6,7 @@ namespace Winter.Assets.Project.Scripts.Runtime.Services.Audio
 {
     public class SoundsPlayer : MonoBehaviour
     {
-        [SerializeField] private SurfaceSound _sound;
+        [SerializeField] private StepAudioSource _sound;
         [SerializeField] private AudioMixer _mixer;
 
         private void Start()
