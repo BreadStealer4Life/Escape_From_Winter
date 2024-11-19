@@ -1,79 +1,46 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class SurfaceSound : MonoBehaviour
+public class SurfaceSound : StepAudioSource
 {
-    [SerializeField] private AudioSource _audioSource;
     [SerializeField] private StepSounds[] _stepSounds;
-
-    [Space(5), Header("Raycast settings")]
-    [SerializeField] private Transform _point;
-    [SerializeField] private float _distance;
 
     private RaycastHit _hitInfo;
     private StepSounds _currentStepSounds;
     private Surface _currentSurface;
-    private Queue<AudioClip> _audioClips;
 
-    private void Awake()
-    {
-        Init();
-    }
-
-    private void Init()
-    {
-        _audioClips = new Queue<AudioClip>();
-    }
-
-    private void InitAudioClips()
-    {
-        Init();
-
-        for (int i = 0; i < _currentStepSounds.ClipsCount; i++)
-            _audioClips.Enqueue(_currentStepSounds.GetClipByIndex(i));
-    }
-
-    private void Update()
+    private void SetCurrentStep()
     {
         _currentSurface = GetSurface();
 
-        if (_currentSurface == null || _currentSurface.Type == _currentStepSounds.SurfaceType)
+        if (_currentSurface == null || _currentStepSounds.SurfaceType == _currentSurface.Type)
             return;
 
         foreach (var stepSounds in _stepSounds)
         {
-            if (_currentSurface.Type == stepSounds.SurfaceType)
+            if (stepSounds.SurfaceType == _currentSurface.Type)
             {
                 _currentStepSounds = stepSounds;
-                InitAudioClips();
+                InitAudioClips(_currentStepSounds);
             }
         }
     }
 
     private Surface GetSurface()
     {
-        if (Physics.Raycast(_point.position, -_point.up, out _hitInfo, _distance))
+        if (Physics.Raycast(transform.position, -transform.up, out _hitInfo, 5))
             if (_hitInfo.collider.TryGetComponent(out Surface surface))
                 return surface;
 
         return null;
     }
 
-    private AudioClip GetAudioClip()
+    public override void Play()
     {
-        if (_audioClips.Count > 0)
-            return _audioClips.Dequeue();
+        SetCurrentStep();
 
-        InitAudioClips();
-        return _audioClips.Dequeue();
-    }
-
-    public void Play()
-    {
         if (_currentSurface == null)
             return;
 
-        _audioSource.clip = GetAudioClip();
-        _audioSource.Play();
+        PlayAndSetClip(_currentStepSounds);
     }
 }
