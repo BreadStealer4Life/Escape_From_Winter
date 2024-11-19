@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Olechka/Scenes/MainMenu.unity
     guid: d734bcc19dc6dd140854ec0ab3896daa
   - enabled: 0
-    path: Assets/Olechka/Scenes/Level1.unity
+    path: Assets/Olechka/Scenes/Lvl1.unity
     guid: 6b28d94f00eefc6419836d806141e598
   - enabled: 0
     path: Assets/Olechka/Scenes/Lvl2.unity
