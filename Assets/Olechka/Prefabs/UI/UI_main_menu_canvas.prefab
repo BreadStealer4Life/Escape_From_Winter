@@ -3144,7 +3144,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4866652543261724883}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 862932993092363504}
+        m_TargetAssemblyTypeName: Olechka.Load_scene, Assembly-CSharp
+        m_MethodName: Load_start
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Lvl_2
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3280583929137194908
 GameObject:
   m_ObjectHideFlags: 0
@@ -5619,6 +5631,7 @@ GameObject:
   - component: {fileID: 6200778960358479606}
   - component: {fileID: 4572100478026713412}
   - component: {fileID: 2064561137245830062}
+  - component: {fileID: 862932993092363504}
   m_Layer: 5
   m_Name: UI_main_menu_canvas
   m_TagString: Untagged
@@ -5715,6 +5728,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &862932993092363504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5469384219297871079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fc4beed34d4a940b648feccee2e1ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 0
+  Black_fon: {fileID: 0}
+  Speed_blackout: 0.2
+  Start_reverse_blackout: 1
 --- !u!1 &5651599842923683857
 GameObject:
   m_ObjectHideFlags: 0
@@ -6609,7 +6638,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5360726253373114824}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 862932993092363504}
+        m_TargetAssemblyTypeName: Olechka.Load_scene, Assembly-CSharp
+        m_MethodName: Exit_game
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5899826503796733705
 GameObject:
   m_ObjectHideFlags: 0
@@ -8115,7 +8156,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6816947117533705027}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 862932993092363504}
+        m_TargetAssemblyTypeName: Olechka.Load_scene, Assembly-CSharp
+        m_MethodName: Load_start
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Lvl_3
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7033342543772913669
 GameObject:
   m_ObjectHideFlags: 0
@@ -10319,7 +10372,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7298418266988496517}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 862932993092363504}
+        m_TargetAssemblyTypeName: Olechka.Load_scene, Assembly-CSharp
+        m_MethodName: Load_start
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Lvl_1
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8502923649362606967
 GameObject:
   m_ObjectHideFlags: 0

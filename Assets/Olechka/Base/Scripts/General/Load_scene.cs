@@ -53,12 +53,14 @@ namespace Olechka
         #region Методы Callback
         private void Start()
         {
-            if(Black_fon)
+            if (Black_fon)
+            {
                 Black_fon.gameObject.SetActive(true);
 
-            if(Start_reverse_blackout)
-            if (Blackout_coroutine == null)
-                Blackout_coroutine = StartCoroutine(Coroutine_Blackout(false));
+                if (Start_reverse_blackout)
+                    if (Blackout_coroutine == null)
+                        Blackout_coroutine = StartCoroutine(Coroutine_Blackout(false));
+            }
         }
         #endregion
 
