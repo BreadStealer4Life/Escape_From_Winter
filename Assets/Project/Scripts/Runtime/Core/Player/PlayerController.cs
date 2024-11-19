@@ -70,7 +70,7 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
 
         private void OnDestroy()
         {
-            _headBobController.PlayStepSound -= _audioService.PlayStepSound;
+            //_headBobController.PlayStepSound -= _audioService.PlayStepSound;
 
             _slipperyTriggerObserver.Enter -= OnSlipperyTriggerEnter;
             _slipperyTriggerObserver.Exit -= OnSlipperyTriggerExit;

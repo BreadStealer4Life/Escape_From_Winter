@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Nikitka(GameDesigner)/Lvl3.unity
     guid: 4791326f282bc6448a76dded5172320e
+  - enabled: 1
+    path: Assets/zichemerr(Jamil)/Scenes/Titles.unity
+    guid: 905bbd5ba48abb145bb2410fc94d5e1c
   m_configObjects: {}
