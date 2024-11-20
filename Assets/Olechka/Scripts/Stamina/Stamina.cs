@@ -58,11 +58,18 @@ namespace Olechka
 
             if (UI_stamina.Singleton_Instance)
                 UI_stamina_script = UI_stamina.Singleton_Instance;
+
+            Invoke(nameof(Preparation), 0.1f);
+        }
+
+        void Preparation()
+        {
+            PlayerController_script._motorController.ClimbingEnduranceUpdated += Climbing;
         }
 
         private void Update()
         {
-            PlayerController_script._motorController.ClimbingEnduranceUpdated += Climbing;
+            
 
             if (Active_bool && Update_bool)
             {
