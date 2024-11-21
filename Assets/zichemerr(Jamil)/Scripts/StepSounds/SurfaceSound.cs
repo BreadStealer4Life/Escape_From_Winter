@@ -8,6 +8,11 @@ public class SurfaceSound : StepAudioSource
     private StepSounds _currentStepSounds;
     private Surface _currentSurface;
 
+    private void Awake()
+    {
+        _currentStepSounds = _stepSounds[0];
+    }
+
     private void SetCurrentStep()
     {
         _currentSurface = GetSurface();

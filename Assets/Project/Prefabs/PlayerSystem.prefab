@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 1654021934608743753}
   - component: {fileID: 409983788986419740}
   - component: {fileID: 5680635937195947119}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SlipperyTriggerObserver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1034,7 +1034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eec58bd6cb6c1b248bec7152785e97ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sound: {fileID: 8892900358066877846}
+  _sound: {fileID: 6121007331046244324}
   _mixer: {fileID: 24100000, guid: 18f7ab0c42f35694f9eb4e6e5a3e40ff, type: 2}
 --- !u!1 &6997643530180014683
 GameObject:
@@ -1050,7 +1050,7 @@ GameObject:
   - component: {fileID: 3845767629544872230}
   - component: {fileID: 7569808151612731828}
   - component: {fileID: 318916108179112896}
-  - component: {fileID: 8892900358066877846}
+  - component: {fileID: 6121007331046244324}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1188,7 +1188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc55e672b3ecab54ebe6c7dd59fc1e0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8892900358066877846
+--- !u!114 &6121007331046244324
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1197,10 +1197,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6997643530180014683}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71dc10898ca8189488261cce1c2dc67d, type: 3}
+  m_Script: {fileID: 11500000, guid: 88f0c2d0e00d1a84fbd8489666a34519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 3073837398777615647}
+  _stepSound:
+    _clips: []
+    _surfaceType: 0
   _stepSounds:
   - _clips:
     - {fileID: 8300000, guid: 95a1a6797b19c3e408b721250eb76b64, type: 3}
@@ -1216,8 +1219,6 @@ MonoBehaviour:
     - {fileID: 8300000, guid: ec347f357da7dc447957450f342ac5c8, type: 3}
     - {fileID: 8300000, guid: 9c6654918b942764aaeb0c9990c2f938, type: 3}
     _surfaceType: 1
-  _point: {fileID: 6789564220972475317}
-  _distance: 2
 --- !u!1 &7059675675555717218
 GameObject:
   m_ObjectHideFlags: 0
