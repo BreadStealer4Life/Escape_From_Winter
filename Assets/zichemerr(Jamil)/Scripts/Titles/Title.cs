@@ -26,6 +26,7 @@ public class Title : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
         _sequence.Append(
             _rectTransform.DOMoveY(_endPositionPoint.position.y, _durationTitle)
