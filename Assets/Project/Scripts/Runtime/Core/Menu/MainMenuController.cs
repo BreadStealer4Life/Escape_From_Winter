@@ -1,3 +1,4 @@
+using Shark.Systems.Checkpoints;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -44,6 +45,8 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Menu
             _selectLevelThree.onClick.AddListener(OnSelectLevelThreeButtonLicked);
 
             _musicPlayer.StartMusic();
+
+            CheckpointManager.Clear();
         }
 
         private void OnDestroy()
