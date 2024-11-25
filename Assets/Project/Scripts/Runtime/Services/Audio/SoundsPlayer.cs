@@ -6,9 +6,8 @@ namespace Winter.Assets.Project.Scripts.Runtime.Services.Audio
 {
     public class SoundsPlayer : MonoBehaviour
     {
-        [SerializeField] private AudioSource _soundSource;
+        [SerializeField] private StepAudioSource _sound;
         [SerializeField] private AudioMixer _mixer;
-        [SerializeField] private AudioClip _stepClip;
 
         private void Start()
         {
@@ -25,7 +24,7 @@ namespace Winter.Assets.Project.Scripts.Runtime.Services.Audio
 
         public void PlayStepSound()
         {
-            _soundSource.PlayOneShot(_stepClip);
+            _sound.Play();
         }
 
         private void SetSoundsVolume()

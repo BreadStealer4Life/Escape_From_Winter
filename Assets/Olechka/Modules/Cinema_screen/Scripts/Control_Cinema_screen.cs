@@ -1,6 +1,8 @@
+using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Video;
 
 namespace Olechka
@@ -29,13 +31,35 @@ namespace Olechka
 
         int Id_video = 0;
 
+        bool Play_bool = false;
+
+
+        [Foldout("Ивенты")]
+        [Tooltip("Ивент при запуске")]
+        [SerializeField]
+        UnityEvent Play_event = new UnityEvent();
+
+        [Foldout("Ивенты")]
+        [Tooltip("Ивент при паузе")]
+        [SerializeField]
+        UnityEvent Pause_event = new UnityEvent();
+
         private void Start()
         {
+
             if (Start_bool) 
                 Start_play(Url_video_array[0]);
 
             if (Auto_next_bool)
                 VPlayer.loopPointReached += Next_play;
+        }
+
+        public void Play_and_pause()
+        {
+            if (!Play_bool)
+                Continue();
+            else
+                Pause();
         }
 
         public void Start_play()
@@ -48,6 +72,7 @@ namespace Olechka
             Start_play(Url_video_array[_id_url]);
         }
 
+
         /// <summary>
         /// Запустить трансляцию видео
         /// </summary>
@@ -56,6 +81,29 @@ namespace Olechka
         {
             VPlayer.url = _url;
             VPlayer.Play();
+            Play_bool = true;
+            Play_event.Invoke();
+        }
+
+        public void Pause()
+        {
+            VPlayer.Pause();
+
+            Play_bool = false;
+
+            Pause_event.Invoke();
+        }
+
+        public void Continue()
+        {
+            if(VPlayer.url == "")
+                VPlayer.url = Url_video_array[0];
+
+            VPlayer.Play();
+
+            Play_bool = true;
+
+            Play_event.Invoke();
         }
 
         public void Last_play()

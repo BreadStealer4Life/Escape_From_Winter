@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 94a09bcb93d1df641b7bdc909bc47779, type: 2}
+  - {fileID: 2100000, guid: 3460e54024ad33840b7d15301b16aa4a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -146,9 +146,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: 5d5101eb9f1e87d449cbd99eb382023d, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.09
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -284,8 +284,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.1474934, y: 3.0144186, z: 2.0113544}
+  m_Center: {x: 0.08977413, y: 1.0072093, z: -0.012661934}
 --- !u!114 &1407952925942595704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,7 +350,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 14, y: 2, z: 14}
+  m_Size: {x: 22, y: 2, z: 22}
   m_Center: {x: 0, y: 0.24856812, z: 0}
 --- !u!114 &8644222651389587596
 MonoBehaviour:
@@ -364,7 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01234b9dbbd40cf408a49427021859e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallTime: 1
+  fallTime: 0.4
   _platformAudioSource: {fileID: 5931614184487609502}
-  _audioClip: {fileID: 8300000, guid: c1f53fc7cd83ab04988e6e5babc09e52, type: 3}
+  _audioClip: {fileID: 8300000, guid: 5d5101eb9f1e87d449cbd99eb382023d, type: 3}
   _fallIceRB: {fileID: 5173322654060705634}
