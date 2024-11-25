@@ -1,3 +1,5 @@
+using Shark.Systems.Checkpoints;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using Winter.Assets.Project.Scripts.Runtime.Core.Player.Data;
@@ -112,6 +114,8 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
             _motorController.ClimbingEnduranceUpdated = UpdateClimbingEndurance;
 
             _motorController.ClimbingEnduranceUpdated += Start_Climbing;
+
+            Respawn();
         }
 
         public void OnPauseGame() => _isControllerActive = false;
@@ -387,5 +391,15 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
             }
         }
 
+        internal void Spawn(CheckpointData checkpointData)
+        {
+            Debug.Log("Spawn to: " + checkpointData.spawnPosition);
+            transform.position = checkpointData.spawnPosition;
+        }
+
+        public void Respawn()
+        {
+            this.TryLoadCheckpoint();
+        }
     }
 }
