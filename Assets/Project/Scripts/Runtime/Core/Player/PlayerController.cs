@@ -114,8 +114,6 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
             _motorController.ClimbingEnduranceUpdated = UpdateClimbingEndurance;
 
             _motorController.ClimbingEnduranceUpdated += Start_Climbing;
-
-            Respawn();
         }
 
         public void OnPauseGame() => _isControllerActive = false;
@@ -391,15 +389,11 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.Player
             }
         }
 
-        internal void Spawn(CheckpointData checkpointData)
+        internal void Spawn(Vector3 position, Quaternion quaternion)
         {
-            Debug.Log("Spawn to: " + checkpointData.spawnPosition);
-            transform.position = checkpointData.spawnPosition;
-        }
-
-        public void Respawn()
-        {
-            this.TryLoadCheckpoint();
+            _characterController.enabled = false;
+            transform.SetPositionAndRotation(position, quaternion);
+            _characterController.enabled = true;
         }
     }
 }

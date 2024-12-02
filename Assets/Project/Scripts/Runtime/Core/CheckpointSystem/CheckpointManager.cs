@@ -1,39 +1,62 @@
+using System.IO;
 using UnityEngine;
+using Winter.Assets.Project.Scripts.Runtime.Core.FreezeSystem;
 using Winter.Assets.Project.Scripts.Runtime.Core.Player;
+using Winter.Assets.Project.Scripts.Runtime.Infrastructure.Scene.Root;
 
 namespace Shark.Systems.Checkpoints
 {
     public struct CheckpointData
     {
         public Vector3 spawnPosition;
+        public Quaternion spawnRotation;
+
+        public float freezeValue;
+
         public bool isActivated;
     }
 
     public static class CheckpointManager
     {
-        private static readonly string _checkpointKey = "LastCheckpoint";
-        public static bool HasSave => PlayerPrefs.HasKey(_checkpointKey);
+        public static bool HasSave => File.Exists(_path);
+        public static readonly string _path = Path.Combine(Application.persistentDataPath, "checkpoint.json");
+
+        public static FreezeController _freeze = GameObject.FindFirstObjectByType<FreezeController>();
 
         public static void Save(this Checkpoint checkpoint, CheckpointData data)
         {
+            RefreshFreezeController();
+            data.freezeValue = _freeze.model.GetFreezeValue();
+
             string json = JsonUtility.ToJson(data);
-            PlayerPrefs.SetString(_checkpointKey, json);
-            PlayerPrefs.Save();
+            File.WriteAllText(_path, json);
         }
 
-        public static void TryLoadCheckpoint(this PlayerController player)
+        public static void TryLoadCheckpoint()
         {
             if (HasSave)
             {
-                string json = PlayerPrefs.GetString(_checkpointKey);
+                string json = File.ReadAllText(_path);
                 CheckpointData data = JsonUtility.FromJson<CheckpointData>(json);
-                player.Spawn(data);
+
+                GameObject.FindFirstObjectByType<LevelBootstrap>().ReloadLevelFromCheckpoint(data);
             }
         }
 
         public static void Clear()
         {
-            PlayerPrefs.DeleteKey(_checkpointKey);
+            if (HasSave)
+            {
+                File.Delete(_path);
+            }
+        }
+
+        private static void RefreshFreezeController()
+        {
+            if (_freeze == null)
+            {
+                _freeze = GameObject.FindFirstObjectByType<FreezeController>();
+            }
         }
     }
 }

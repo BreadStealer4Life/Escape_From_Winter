@@ -118,3 +118,11 @@ namespace Winter.Assets.Project.Scripts.Runtime.Infrastructure.Scene.Root
         }
     }
 }
+using Shark.Systems.Checkpoints;
+            CheckpointManager.TryLoadCheckpoint();
+        public void ReloadLevelFromCheckpoint(CheckpointData data)
+        {
+            _freezeController.model.SetFreezeValue(data.freezeValue);
+            _strelkaController.UpdateStrelkaRotation(data.freezeValue);
+            _playerController.Spawn(data.spawnPosition, data.spawnRotation);
+        }

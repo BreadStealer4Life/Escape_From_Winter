@@ -9,11 +9,11 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.FreezeSystem
 
         private float _currentFreezeTime;
         private bool _isActive;
-        private FreezeModel _model;
+        public FreezeModel model;
 
         public void Init(FreezeModel freezeModel)
         {
-            _model = freezeModel;
+            model = freezeModel;
             _currentFreezeTime = 0;
         }
 
@@ -31,7 +31,7 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.FreezeSystem
             _currentFreezeTime += Time.deltaTime;
             float value = Mathf.Lerp(0, 1, _currentFreezeTime / _timeToFreeze);
 
-            _model.SetFreezeValue(value);
+            model.SetFreezeValue(value);
 
             if (value >= 1)
                 _isActive = false;

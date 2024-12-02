@@ -6,23 +6,23 @@ namespace Shark.Systems.Checkpoints
     {
         private CheckpointData _data;
 
-        private void Start() => Refresh();
-        private void OnValidate() => Refresh();
-
-        private void Refresh()
+        private void RefreshData()
         {
-            _data.spawnPosition = transform.position;
-
-            gameObject.SetActive(!_data.isActivated);
             enabled = false;
+
+            _data.spawnPosition = transform.position;
+            _data.spawnRotation = transform.rotation;
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
             {
-                gameObject.SetActive(_data.isActivated = false);
+                RefreshData();
+
                 this.Save(_data);
+
+                gameObject.SetActive(_data.isActivated = false);
             }
         }
     }
