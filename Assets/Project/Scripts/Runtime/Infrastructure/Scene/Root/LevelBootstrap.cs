@@ -8,6 +8,7 @@ using Winter.Assets.Project.Scripts.Runtime.Services.Audio;
 using Winter.Assets.Project.Scripts.Runtime.Services.GamePause;
 using Winter.Assets.Project.Scripts.Runtime.Services.Input;
 using Olechka;
+using Shark.Systems.Checkpoints;
 
 namespace Winter.Assets.Project.Scripts.Runtime.Infrastructure.Scene.Root
 {
@@ -49,6 +50,8 @@ namespace Winter.Assets.Project.Scripts.Runtime.Infrastructure.Scene.Root
 
             _musicPlayer.StartMusic();
             _inputHandler.Enable();
+
+            CheckpointManager.TryLoadCheckpoint();
         }
 
         private void OnDestroy()
@@ -116,13 +119,11 @@ namespace Winter.Assets.Project.Scripts.Runtime.Infrastructure.Scene.Root
 
             _gamePauseService.ResumeGame();
         }
-    }
-}
-using Shark.Systems.Checkpoints;
-            CheckpointManager.TryLoadCheckpoint();
         public void ReloadLevelFromCheckpoint(CheckpointData data)
         {
             _freezeController.model.SetFreezeValue(data.freezeValue);
             _strelkaController.UpdateStrelkaRotation(data.freezeValue);
             _playerController.Spawn(data.spawnPosition, data.spawnRotation);
         }
+    }
+}
