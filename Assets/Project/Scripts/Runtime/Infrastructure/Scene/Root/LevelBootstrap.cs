@@ -121,8 +121,7 @@ namespace Winter.Assets.Project.Scripts.Runtime.Infrastructure.Scene.Root
         }
         public void ReloadLevelFromCheckpoint(CheckpointData data)
         {
-            _freezeController.model.SetFreezeValue(data.freezeValue);
-            _strelkaController.UpdateStrelkaRotation(data.freezeValue);
+            _freezeController.timer = data.freezeValue;
             _playerController.Spawn(data.spawnPosition, data.spawnRotation);
         }
     }

@@ -26,7 +26,7 @@ namespace Shark.Systems.Checkpoints
         public static void Save(this Checkpoint checkpoint, CheckpointData data)
         {
             RefreshFreezeController();
-            data.freezeValue = _freeze.model.GetFreezeValue();
+            data.freezeValue = _freeze.timer;
 
             string json = JsonUtility.ToJson(data);
             File.WriteAllText(_path, json);

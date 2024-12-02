@@ -7,14 +7,14 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.FreezeSystem
     {
         [SerializeField] private float _timeToFreeze;
 
-        private float _currentFreezeTime;
-        private bool _isActive;
         public FreezeModel model;
+        public float timer;
+        private bool _isActive;
 
         public void Init(FreezeModel freezeModel)
         {
             model = freezeModel;
-            _currentFreezeTime = 0;
+            timer = 0;
         }
 
         public void OnPauseGame() => _isActive = false;
@@ -28,8 +28,8 @@ namespace Winter.Assets.Project.Scripts.Runtime.Core.FreezeSystem
 
         private void UpdateFreezeTime()
         {
-            _currentFreezeTime += Time.deltaTime;
-            float value = Mathf.Lerp(0, 1, _currentFreezeTime / _timeToFreeze);
+            timer += Time.deltaTime;
+            float value = Mathf.Lerp(0, 1, timer / _timeToFreeze);
 
             model.SetFreezeValue(value);
 
